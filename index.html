@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src='wax/ext/modestmaps.min.js' type='text/javascript'></script>
+    <script src='wax/dist/wax.mm.js' type='text/javascript'></script>
+    <link href='wax/theme/controls.css' rel='stylesheet' type='text/css' />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+var url = 'http://api.tiles.mapbox.com/v3/mapbox.world-light.jsonp';
+wax.tilejson(url, function(tilejson) {
+    // Set up a map in a div with the id 'modestmaps-setup'
+    var m = new MM.Map('modestmaps-setup',
+      // Use Wax's connector to add a new custom layer
+      new wax.mm.connector(tilejson),
+      // And it'll be 240px by 120px
+      new MM.Point(240,120));
+
+    // Center it on the United States, at zoom level 2.
+    m.setCenterZoom({ lat: 39, lon: -98 }, 2);
+});
+</body>
+</html>
