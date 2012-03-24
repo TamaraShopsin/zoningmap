@@ -18,15 +18,18 @@ wax.tilejson(url, function(tilejson) {
 
   m.setCenterZoom(new MM.Location(tilejson.center[1],
     tilejson.center[0]),
-    tilejson.center[2] - 3);
+    tilejson.center[2] - 0);
+wax.mm.legend(m, tilejson).appendTo(m.parent);
 
   wax.mm.zoomer(m).appendTo(m.parent);
+  wax.mm.interaction(m);
+ 
   
-  var interaction = wax.mm.interaction().map(map).tilejson(tilejson)
-        .on(wax.tooltip().parent(map.parent).events());
-
+  
+  
 });
 </script>
 <div id='intro-map'></div>
+<div class='wax-legends'><div class='wax-legend'>legend content</div></div>
 </body>
 </html>
