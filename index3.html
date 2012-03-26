@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href='wax/theme/controls.css' rel='stylesheet' type='text/css' />
   <style type='text/css'>
     body {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -28,8 +29,8 @@
       bottom: 0;
       right: 0;
       width: 359px;
-      background: #111;
-      color: #fff;
+      background: #fff;
+      color: #000;
       border-left:1px solid #000;
       padding: 20px;
     }
@@ -37,23 +38,72 @@
       font-size: 80%;
     }
 	
+	.wax-legend .title {
+    text-align: left;
+    margin-bottom:5px;
+    font-weight: bold;
+    font-size: 90%;
+    }
+
+  .wax-legend .scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+    }
+  .wax-legend .scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+    }
+  .wax-legend ul.labels li span {
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+    }
+  .wax-legend ul li span {
+    display: block;
+    margin-left: 0;
+    }
+  .wax-legend .source {
+    font-size: 70%;
+    color: #000;
+    clear: both;
+    }
+  .wax-attribution a,
+  .wax-legend a {
+    color: #777;
+    }
+.wax-legend a:hover {
+    color: #FB8072;
+    }
+	
   </style>
 </head>
 <body>
   <div id='sidebar'>
-    <h2>Tornadoes in the U.S. - 2010</h2>
-    <p>This map shows every tornado that occurred in the United States in 2010. Sizes of the dots are based on F-scale. Hover over them to view detailed statistics.</p>
-    <p><span class='source'>Source: <a href='http://www.weather.gov/'>NOAA's National Weather Service</a>
-    <a href= http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.1100" target="_blank"> Municipal Code</a></span></p>
+    <h2>Commercial Zoning Districs</h2>
+    <form name="form1" method="post" action="">
+      <label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield">
+    </form>
+    <p>search feature?? - this thing will grow</p>
   
 <ul class='labels'>
-    <li><span style='background:#8DD3C7;'></span>CC Community Commercial<a href="http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.700" target="_blank"> Municipal Code</a></li>
-    <li><span style='background:#FFFFB3;'></span>CB Beach Commercial<a href= "http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.1100" target="_blank"> Municipal Code</a></li>
-    <li><span style='background:#ae8;'></span>CBD Central Business District <a href= "http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.2300" target="_blank"> Municipal Code</a></li>
-    <li><span style='background:#AB9;'></span>CBD-E Subdistrict Lower Pacific Ave <a href= "http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.2360" target="_blank"> Municipal Code</a></li>
-    <li><span style='background:#BEBADA;'></span>CN Neighborhood Commercial <a href= "http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.1000" target="_blank"> Municipal Code</a></li>
-    <li><span style='background:#FB8072;'></span>CT Thoroughfare Commercial <a href="http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.900" target="_blank"> Municipal Code</a></li>
-    <li><span style='background:#80B1D3;'></span>IG General Industrial <a href="http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.1500" target="_blank"> Municipal Code</a></li>
+    <li><span style='background:#8DD3C7;'></span>CC Community Commercial: </br>
+    Primary zoning for our major commercial corridors, this land district is set up to permit many different types of uses that align with the principals of infill and "smart growth" strategies.</br>Find out more<a href="http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.700" target="_blank"> 24.10.700  of the Municipal Code</a></li>
+    <li><span style='background:#FFFFB3;'></span>CB Beach Commercial</br> This land use designation helps to situate uses that primarily serve visitors near the beach. </br>Find out more <a href= "http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.1100" target="_blank">24.10.1100 of the Municipal Code</a></li>
+    <li><span style='background:#ae8;'></span>CBD Central Business District </br>Find out more<a href= "http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.2300" target="_blank"> 24.10.2300 of theMunicipal Code</a></li>
+    <li><span style='background:#AB9;'></span>CBD-E Subdistrict Lower Pacific Ave </br>Find out more<a href= "http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.2360" target="_blank"> 24.10.2360 of the Municipal Code</a></li>
+    <li><span style='background:#BEBADA;'></span>CN Neighborhood Commercial </br> Low Density Commercial Zoning where the bustomer base will primarily access from foot or alternative transportation</br>Find out more<a href= "http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.1000" target="_blank"> Municipal Code</a></li>
+    <li><span style='background:#FB8072;'></span>CT Thoroughfare Commercial </br>To provide for retail, commercial, service, amusement, and transient-residential uses which are appropriate to thoroughfare location and dependent upon thoroughfare travel. </br>Find out more<a href="http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.900" target="_blank"> 24.10.900 of the Municipal Code</a></li>
+    <li><span style='background:#80B1D3;'></span>IG General Industrial</br> The primary place for making and assembling items for distribution and sale. Incidential retail allowed with administrative use permit</br>Find out more<a href="http://www.codepublishing.com/CA/SantaCruz/html/SantaCruz24/SantaCruz2410.html#24.10.1500" target="_blank"> 24.10.1500 of the Municipal Code</a></li>
   </ul>
 </div>
 <div class='source'>Source: City of 
@@ -62,7 +112,7 @@ Santa Cruz</div>
   
   </div>
   <div id="mymap">
-  <iframe width='100%' height='100%' frameBorder='0' src='http://a.tiles.mapbox.com/v3/tamaracfa.map-t1nbdcsa.html#15/36.975/-122.026'></iframe>
+  <iframe width='100%' height='100%' frameBorder='0' src='http://a.tiles.mapbox.com/v3/tamaracfa.map-t1nbdcsa.html#12/36.975/-122.026'></iframe>
 </div>
 </body>
 </html>
