@@ -85,14 +85,34 @@
     }
 	
   </style>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript">
+  var geocoder;
+  var map;
+
+  function codeAddress() {
+	   geocoder = new google.maps.Geocoder();
+    var address = document.getElementById("address").value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        console.log(results[0].geometry.location);
+        
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+</script>
 </head>
 <body>
   <div id='sidebar'>
     <h2>Commercial Zoning Districs</h2>
-    <form name="form1" method="post" action="">
+    
       <label for="textfield"></label>
-      <input type="text" name="textfield" id="textfield">
-    </form>
+      <input type="text" name="textfield" id="address"><input type="submit" name="button" id="button" value="Submit" onClick="codeAddress()">
+ 
+    
+    <p>&nbsp;</p>
     <p>search feature?? - this thing will grow</p>
   
 <ul class='labels'>
