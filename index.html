@@ -8,34 +8,41 @@
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script>
 var codeAddress;
+var map;
+var _tilejson;
 wax.tilejson('http://a.tiles.mapbox.com/v3/tamaracfa.map-t1nbdcsa.jsonp',
   function(tilejson) {
-  var map = new L.Map('map-div')
+  _tilejson = tilejson;
+  map = new L.Map('map-div')
     .addLayer(new wax.leaf.connector(tilejson))
     .setView(new L.LatLng(36.9749, -122.0263), 14);
-  wax.leaf.interaction()
-    .map(map)
-    .tilejson(tilejson)
+	console.log(map);
+	console.log(map._container);
+  wax.leaf.interaction(map, tilejson)
     .on(wax.tooltip().animate(true).parent(map._container).events());
- var geocoder;
-  var map;
 
-  codeAddress = function() {
-	   geocoder = new google.maps.Geocoder();
-    var address = document.getElementById("address").value;
+});
+
+
+	codeAddress = function() {
+	geocoder = new google.maps.Geocoder();
+	var address = document.getElementById("address").value;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        console.log(results[0].geometry.location);
-		var latlng = new L.LatLng(36.9740013, -122.03032380000002);
+        console.log(results[0]);
+		var latlng = new L.LatLng(results[0].geometry.location.Ua, results[0].geometry.location.Va);
 		var marker = new L.Marker(latlng); 
-        m.addLayer(marker);
+        map.addLayer(marker);
+		
+		marker.bindPopup("hey matt, thanks").openPopup();
         
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
     });
   }
-});
+
+
 </script>
 </head>
 <body>
