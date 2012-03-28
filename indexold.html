@@ -4,36 +4,11 @@
 <head>
 
 <link href='wax/theme/controls2.css' rel='stylesheet' type='text/css' />  
-  <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.8"></script>
-
-  <script src='http://mapbox.com/wax/externals/leaflet/leaflet.js' type='text/javascript'></script>
-  <script src='http://mapbox.com/wax/dist/wax.leaf.min.js' type='text/javascript'></script>
-  <link href='http://mapbox.com/wax/externals/leaflet/leaflet.css' rel='stylesheet' type='text/css' />
+  <script src='wax/ext/leaflet.js' type='text/javascript'></script>
+  <script src='wax/dist/wax.leaf.js' type='text/javascript'></script>
+  <link href='wax/ext/leaflet.css' rel='stylesheet' type='text/css' />
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script>
-dojo.require("esri.tasks.query");
-var queryTask = new esri.tasks.QueryTask("http://gis.cityofsantacruz.com/ArcGIS/rest/services/NewPlanning/MapServer/9");
-var query = new esri.tasks.Query();
-query.returnGeometry = true;
-query.outFields = ["*"];
-var zoneMap = {
-	"RL":"Residential",
-	"CBD":"Central Business District"
-}
-function executeQuery(x, y){
-	var point = new esri.geometry.Point(x, y, new esri.SpatialReference({wkid: 4326}));
-	var result;
-	query.geometry = point;
-	queryTask.execute(query, function(results){
-		zone = results.features[0].attributes['ZONING'];
-		try {
-			zone = zoneMap[zone] ? zoneMap[zone] : zone; 
-		} catch(e) {}
-		dojo.query('.leaflet-popup-content')[0].innerHTML += " " + zone;
-	});
-}
-
-
 var codeAddress;
 var map;
 var _tilejson;
@@ -61,12 +36,10 @@ wax.tilejson('http://a.tiles.mapbox.com/v3/tamaracfa.map-t1nbdcsa.jsonp',
         console.log(results[0]);
 		var street = results[0].formatted_address;
 		var latlng = new L.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-                console.log(latlng);
 		var marker = new L.Marker(latlng); 
         map.addLayer(marker);
-
+		
 		marker.bindPopup(street).openPopup();
-		executeQuery(results[0].geometry.location.lng(), results[0].geometry.location.lat());
         
       } else {
         alert("Geocode was not successful for the following reason: " + status);
@@ -78,14 +51,14 @@ wax.tilejson('http://a.tiles.mapbox.com/v3/tamaracfa.map-t1nbdcsa.jsonp',
 </script>
 </head>
 <body>
-put in your address
+put in yer address
 <label for="textfield"></label>
       <input type="text" name="textfield" id="address"><input type="submit" name="button" id="button" value="Submit" onClick="codeAddress()">
   
-
+</br>
 </br>
 </br>      
 <div id='map-div' style="height: 600px"></div>
-<div id='zoning-div' style="position: absolute; left: 400px; top: 0"></div>
+
 </body>
 </html>
