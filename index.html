@@ -23,7 +23,8 @@ wax.tilejson('http://a.tiles.mapbox.com/v3/tamaracfa.map-t1nbdcsa.jsonp',
 	wax.leaf.interaction()
     .map(map)
     .tilejson(tilejson)
-    .on(wax.tooltip().animate(true).parent(map._container).events());
+    .on(wax.tooltip().animate(false).parent(map._container).events())
+
 });
 
 
@@ -34,7 +35,7 @@ wax.tilejson('http://a.tiles.mapbox.com/v3/tamaracfa.map-t1nbdcsa.jsonp',
       if (status == google.maps.GeocoderStatus.OK) {
         console.log(results[0]);
 		var street = results[0].formatted_address;
-		var latlng = new L.LatLng(results[0].geometry.location.Ua, results[0].geometry.location.Va);
+		var latlng = new L.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 		var marker = new L.Marker(latlng); 
         map.addLayer(marker);
 		
