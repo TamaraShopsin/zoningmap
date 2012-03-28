@@ -7,9 +7,9 @@ describe('fullscreen', function() {
         div.style.width = '400px';
         div.style.height = '400px';
 
-        map = new com.modestmaps.Map(div, new com.modestmaps.TemplatedMapProvider(
+        map = new MM.Map(div, new MM.TemplatedMapProvider(
             'http://{S}tile.openstreetmap.org/{Z}/{X}/{Y}.png', ['a.']));
-        map.setCenterZoom(new com.modestmaps.Location(37.811530, -122.2666097), 10);
+        map.setCenterZoom(new MM.Location(37.811530, -122.2666097), 10);
         wax.mm.fullscreen(map).appendTo(map.parent);
     });
 

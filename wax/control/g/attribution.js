@@ -14,7 +14,7 @@ wax.g.attribution = function(map, tilejson) {
     };
 
     attribution.appendTo = function(elem) {
-        wax.util.$(elem).appendChild(a.element());
+        wax.u.$(elem).appendChild(a.element());
         return this;
     };
 

@@ -21,7 +21,7 @@ wax.g.connector = function(options) {
     this.options = {
         tiles: options.tiles,
         scheme: options.scheme || 'xyz',
-        blankImage: options.blankImage
+        blankImage: options.blankImage || 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
     };
 
     this.minZoom = options.minzoom || 0;
@@ -55,8 +55,8 @@ wax.g.connector.prototype.getTile = function(coord, zoom, ownerDocument) {
 // TODO: expire cache data in the gridmanager.
 wax.g.connector.prototype.releaseTile = function(tile) {
     var key = tile.getAttribute('gTileKey');
-    this.cache[key] && delete this.cache[key];
-    tile.parentNode && tile.parentNode.removeChild(tile);
+    if (this.cache[key]) delete this.cache[key];
+    if (tile.parentNode) tile.parentNode.removeChild(tile);
 };
 
 // Get a tile url, based on x, y coordinates and a z value.

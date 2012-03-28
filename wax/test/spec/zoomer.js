@@ -4,9 +4,9 @@ describe('zoomer', function() {
     beforeEach(function() {
         var div = document.createElement('div');
 
-        map = new com.modestmaps.Map(div, new com.modestmaps.TemplatedMapProvider(
-            'http://{S}tile.openstreetmap.org/{Z}/{X}/{Y}.png', ['a.']), new com.modestmaps.Point(600, 400));
-        map.setCenterZoom(new com.modestmaps.Location(37.811530, -122.2666097), 10);
+        map = new MM.Map(div, new com.modestmaps.TemplatedMapProvider(
+            'http://{S}tile.openstreetmap.org/{Z}/{X}/{Y}.png', ['a.']), new MM.Point(600, 400));
+        map.setCenterZoom(new MM.Location(37.811530, -122.2666097), 10);
         wax.mm.zoomer(map).appendTo(map.parent);
     });
 

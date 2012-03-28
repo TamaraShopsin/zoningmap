@@ -37,19 +37,17 @@ wax.legend = function() {
             element.innerHTML = '';
             element.style.display = 'none';
         }
-        return this;
+        return legend;
     };
 
     legend.add = function() {
         container = document.createElement('div');
         container.className = 'wax-legends';
 
-        element = document.createElement('div');
+        element = container.appendChild(document.createElement('div'));
         element.className = 'wax-legend';
         element.style.display = 'none';
-
-        container.appendChild(element);
-        return this;
+        return legend;
     };
 
     return legend.add();

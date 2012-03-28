@@ -5,11 +5,9 @@
 // It takes one options object, which current accepts a single option:
 // `resolution` determines the number of pixels per grid element in the grid.
 // The default is 4.
-wax.GridManager = function(options) {
-    options = options || {};
+wax.gm = function() {
 
-    var resolution = options.resolution || 4,
-        version = options.version || '1.1',
+    var resolution = 4,
         grid_tiles = {},
         manager = {},
         formatter;
@@ -56,25 +54,23 @@ wax.GridManager = function(options) {
 
         wax.request.get(gurl, function(err, t) {
             if (err) return callback(err, null);
-            callback(null, wax.GridInstance(t, formatter, {
+            callback(null, wax.gi(t, formatter, {
                 resolution: resolution || 4
             }));
         });
         return manager;
     };
 
-    manager.add = function(options) {
-        if (options.template) {
-            manager.template(options.template);
-        } else if (options.formatter) {
-            manager.formatter(options.formatter);
+    manager.tilejson = function(x) {
+        // prefer templates over formatters
+        if (x.template) {
+            manager.template(x.template);
+        } else if (x.formatter) {
+            manager.formatter(x.formatter);
         }
-
-        if (options.grids) {
-            manager.gridUrl(options.grids);
-        }
-        return this;
+        if (x.grids) manager.gridUrl(x.grids);
+        return manager;
     };
 
-    return manager.add(options);
+    return manager;
 };

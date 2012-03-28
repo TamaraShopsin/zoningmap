@@ -1,9 +1,13 @@
 ## Changelog
 
-## 5.0.1
+## 6.0.0
 
-* Real support for Modest Maps 1.0.0-alpha2
-* No longer requires layers to be wrapped with `MM.Layer()` in MM 1.x
+* Event dispatcher for tooltips and other functionality
+* Rewritten tooltip functionality
+* Space optimizations to reduce overall size of library
+* Mature implementation of movetip.js
+* Now includes bean for events
+* Moved all external deps to lib/*
 
 ## 5.0.0-alpha*
 

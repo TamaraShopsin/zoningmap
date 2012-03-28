@@ -1,13 +1,13 @@
 describe('attribution', function() {
-    var map, attribution, MM = com.modestmaps;
+    var map, attribution;
 
     beforeEach(function() {
         callbackResult = null;
         var div = document.createElement('div');
 
-        map = new com.modestmaps.Map(div, new com.modestmaps.TemplatedMapProvider(
+        map = new MM.Map(div, new MM.TemplatedMapProvider(
             'http://{S}tile.openstreetmap.org/{Z}/{X}/{Y}.png', ['a.']), new MM.Point(600, 600));
-        map.setCenterZoom(new com.modestmaps.Location(37.811530, -122.2666097), 10);
+        map.setCenterZoom(new MM.Location(37.811530, -122.2666097), 10);
         attribution = wax.mm.attribution(map, {
             attribution: '42'
         }).appendTo(map.parent);

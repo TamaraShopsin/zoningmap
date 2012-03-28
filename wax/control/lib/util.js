@@ -1,9 +1,8 @@
 var wax = wax || {};
-wax.util = wax.util || {};
 
 // Utils are extracted from other libraries or
 // written from scratch to plug holes in browser compatibility.
-wax.util = {
+wax.u = {
     // From Bonzo
     offset: function(el) {
         // TODO: window margins
@@ -48,7 +47,7 @@ wax.util = {
         calculateOffset(el);
 
         try {
-            while (el = el.offsetParent) calculateOffset(el);
+            while (el = el.offsetParent) { calculateOffset(el); }
         } catch(e) {
             // Hello, internet explorer.
         }
@@ -85,20 +84,6 @@ wax.util = {
             document.getElementById(x) :
             x;
     },
-
-    // From underscore, minus funcbind for now.
-    // Returns a version of a function that always has the second parameter,
-    // `obj`, as `this`.
-    bind: function(func, obj) {
-        var args = Array.prototype.slice.call(arguments, 2);
-        return function() {
-            return func.apply(obj, args.concat(Array.prototype.slice.call(arguments)));
-        };
-    },
-    // From underscore
-    isString: function(obj) {
-        return !!(obj === '' || (obj && obj.charCodeAt && obj.substr));
-    },
     // IE doesn't have indexOf
     indexOf: function(array, item) {
         var nativeIndexOf = Array.prototype.indexOf;
@@ -107,10 +92,6 @@ wax.util = {
         if (nativeIndexOf && array.indexOf === nativeIndexOf) return array.indexOf(item);
         for (i = 0, l = array.length; i < l; i++) if (array[i] === item) return i;
         return -1;
-    },
-    // is this object an array?
-    isArray: Array.isArray || function(obj) {
-        return Object.prototype.toString.call(obj) === '[object Array]';
     },
     // From underscore: reimplement the ECMA5 `Object.keys()` method
     keys: Object.keys || function(obj) {
@@ -125,7 +106,7 @@ wax.util = {
     eventoffset: function(e) {
         var posx = 0;
         var posy = 0;
-        if (!e) var e = window.event;
+        if (!e) { e = window.event; }
         if (e.pageX || e.pageY) {
             // Good browsers
             return {

@@ -14,13 +14,13 @@ wax.mm.attribution = function(map, tilejson) {
     };
 
     attribution.appendTo = function(elem) {
-        wax.util.$(elem).appendChild(a.element());
+        wax.u.$(elem).appendChild(a.element());
         return this;
     };
 
     attribution.init = function() {
         a = wax.attribution();
-        a.set(tilejson.attribution);
+        a.content(tilejson.attribution);
         a.element().className = 'wax-attribution wax-mm';
         return this;
     };

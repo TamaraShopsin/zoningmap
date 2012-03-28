@@ -4,7 +4,7 @@
 // objects for acquiring features from events.
 //
 // This code ignores format of 1.1-1.2
-wax.GridInstance = function(grid_tile, formatter, options) {
+wax.gi = function(grid_tile, options) {
     options = options || {};
     // resolution is the grid-elements-per-pixel ratio of gridded data.
     // The size of a tile element. For now we expect tiles to be squares.
@@ -14,7 +14,7 @@ wax.GridInstance = function(grid_tile, formatter, options) {
 
     // Resolve the UTF-8 encoding stored in grids to simple
     // number values.
-    // See the [utfgrid spec](https://github.com/mapbox/utfgrid-spec)
+    // See the [utfgrid section of the mbtiles spec](https://github.com/mapbox/mbtiles-spec/blob/master/1.1/utfgrid.md)
     // for details.
     function resolveCode(key) {
         if (key >= 93) key--;
@@ -57,18 +57,14 @@ wax.GridInstance = function(grid_tile, formatter, options) {
     };
 
     // Get a feature:
-    //
     // * `x` and `y`: the screen coordinates of an event
     // * `tile_element`: a DOM element of a tile, from which we can get an offset.
-    // * `options` options to give to the formatter: minimally having a `format`
-    //   member, being `full`, `teaser`, or something else.
-    instance.tileFeature = function(x, y, tile_element, options) {
+    instance.tileFeature = function(x, y, tile_element) {
         if (!grid_tile) return;
         // IE problem here - though recoverable, for whatever reason
-        var offset = wax.util.offset(tile_element);
+        var offset = wax.u.offset(tile_element);
             feature = this.gridFeature(x - offset.left, y - offset.top);
-
-        if (feature) return formatter.format(options, feature);
+        return feature;
     };
 
     return instance;

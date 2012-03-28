@@ -25,7 +25,7 @@ wax.mm.pointselector = function(map, tilejson, opts) {
 
     // Create a `com.modestmaps.Point` from a screen event, like a click.
     function makePoint(e) {
-        var coords = wax.util.eventoffset(e);
+        var coords = wax.u.eventoffset(e);
         var point = new MM.Point(coords.x, coords.y);
         // correct for scrolled document
 
@@ -75,7 +75,7 @@ wax.mm.pointselector = function(map, tilejson, opts) {
                 // TODO: avoid circular reference
                 locations[i].pointDiv.location = locations[i];
                 // Create this closure once per point
-                MM.addEvent(locations[i].pointDiv, 'mouseup',
+                bean.add(locations[i].pointDiv, 'mouseup',
                     (function selectPointWrap(e) {
                     var l = locations[i];
                     return function(e) {
@@ -92,7 +92,7 @@ wax.mm.pointselector = function(map, tilejson, opts) {
 
     function mouseDown(e) {
         mouseDownPoint = makePoint(e);
-        MM.addEvent(map.parent, 'mouseup', mouseUp);
+        bean.add(map.parent, 'mouseup', mouseUp);
     }
 
     // Remove the awful circular reference from locations.
@@ -121,13 +121,13 @@ wax.mm.pointselector = function(map, tilejson, opts) {
     };
 
     pointselector.add = function(map) {
-        MM.addEvent(map.parent, 'mousedown', mouseDown);
+        bean.add(map.parent, 'mousedown', mouseDown);
         map.addCallback('drawn', drawPoints);
         return this;
     };
 
     pointselector.remove = function(map) {
-        MM.removeEvent(map.parent, 'mousedown', mouseDown);
+        bean.remove(map.parent, 'mousedown', mouseDown);
         map.removeCallback('drawn', drawPoints);
         for (var i = locations.length - 1; i > -1; i--) {
             pointselector.deleteLocation(locations[i]);
@@ -138,7 +138,7 @@ wax.mm.pointselector = function(map, tilejson, opts) {
     pointselector.deleteLocation = function(location, e) {
         if (!e || confirm('Delete this point?')) {
             location.pointDiv.parentNode.removeChild(location.pointDiv);
-            locations.splice(wax.util.indexOf(locations, location), 1);
+            locations.splice(wax.u.indexOf(locations, location), 1);
             callback(cleanLocations(locations));
         }
     };

@@ -5,12 +5,11 @@ dist: dist_setup dist/wax.ol.min.js \
 	dist/wax.g.min.js dist/wax.mm.min.js \
 	dist/wax.leaf.min.js dist/wax.p.min.js lint
 
+# mindist: dist_setup dist/wax.g.min.js dist/wax.mm.min.js dist/wax.leaf.min.js lint
+
 dist/wax.ol.min.js:
 	cat build/header.js \
-		ext/reqwest.min.js \
-		ext/html-sanitizer-bundle.js \
-		ext/html-sanitizer-loosen.js \
-		ext/mustache.js \
+		lib/*.js \
 		connectors/ol/*.js \
 		control/lib/*.js \
 		control/ol/*.js > dist/wax.ol.js
@@ -18,10 +17,7 @@ dist/wax.ol.min.js:
 
 dist/wax.g.min.js:
 	cat build/header.js \
-		ext/reqwest.min.js \
-		ext/html-sanitizer-bundle.js \
-		ext/html-sanitizer-loosen.js \
-		ext/mustache.js \
+		lib/*.js \
 		control/lib/*.js \
 		control/g/*.js \
 		connectors/g/*.js > dist/wax.g.js
@@ -29,10 +25,7 @@ dist/wax.g.min.js:
 
 dist/wax.mm.min.js:
 	cat build/header.js \
-		ext/reqwest.min.js \
-		ext/html-sanitizer-bundle.js \
-		ext/html-sanitizer-loosen.js \
-		ext/mustache.js \
+		lib/*.js \
 		control/lib/*.js \
 		control/mm/*.js \
 		connectors/mm/*.js > dist/wax.mm.js
@@ -40,10 +33,7 @@ dist/wax.mm.min.js:
 
 dist/wax.leaf.min.js:
 	cat build/header.js \
-		ext/reqwest.min.js \
-		ext/html-sanitizer-bundle.js \
-		ext/html-sanitizer-loosen.js \
-		ext/mustache.js \
+		lib/*.js \
 		control/lib/*.js \
 		control/leaf/*.js \
 		connectors/leaf/*.js > dist/wax.leaf.js
@@ -51,7 +41,7 @@ dist/wax.leaf.min.js:
 
 dist/wax.p.min.js:
 	cat build/header.js \
-		ext/reqwest.min.js \
+		lib/*.js \
 		control/lib/*.js \
 		connectors/p/*.js > dist/wax.p.js
 	$(UGLIFYJS) dist/wax.p.js > dist/wax.p.min.js
@@ -62,6 +52,9 @@ dist_setup:
 	mkdir dist
 	mkdir build
 	$(BANNER) package.json > build/header.js
+
+doc:
+	./node_modules/.bin/docco control/mm/*.js
 
 ext:
 	-test ! -d ext && mkdir ext
@@ -74,4 +67,4 @@ ext:
 lint:
 	./node_modules/.bin/jshint control/lib/*.js control/mm/*.js control/leaf/*.js --config=jshint.json
 
-.PHONY: clean ext
+.PHONY: clean ext doc

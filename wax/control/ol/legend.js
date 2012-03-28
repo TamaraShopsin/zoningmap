@@ -1,8 +1,7 @@
 // Wax: Legend Control
 // -------------------
 
-// Wax header
-var wax = wax || {};
+;var wax = wax || {};
 wax.ol = wax.ol || {};
 
 wax.ol.Legend = OpenLayers.Class(OpenLayers.Control, {

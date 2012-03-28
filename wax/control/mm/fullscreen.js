@@ -18,7 +18,7 @@ wax.mm.fullscreen = function(map) {
         smallSize;
 
     function click(e) {
-        if (e) MM.cancelEvent(e);
+        if (e) e.stop();
         if (fullscreened) {
             fullscreen.original();
         } else {
@@ -41,7 +41,7 @@ wax.mm.fullscreen = function(map) {
         a.className = 'wax-fullscreen';
         a.href = '#fullscreen';
         a.innerHTML = 'fullscreen';
-        MM.addEvent(a, 'click', click);
+        bean.add(a, 'click', click);
         return this;
     };
     fullscreen.full = function() {
@@ -58,7 +58,7 @@ wax.mm.fullscreen = function(map) {
         ss(smallSize[0], smallSize[1]);
     };
     fullscreen.appendTo = function(elem) {
-        wax.util.$(elem).appendChild(a);
+        wax.u.$(elem).appendChild(a);
         return this;
     };
 

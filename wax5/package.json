@@ -1,0 +1,28 @@
+{
+    "name": "wax",
+    "version": "5.0.0-alpha2",
+    "description": "Tools for improving web maps.",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/mapbox/wax.git"
+    },
+    "author": {
+        "name": "MapBox",
+        "url": "http://mapbox.com/",
+        "email": "info@mapbox.com"
+    },
+    "homepage": "http://mapbox.github.com/wax/",
+    "contributors": [
+        "Tom MacWright <macwright@gmail.com>",
+        "Young Hahn <young@developmentseed.org>",
+        "Will White <will@developmentseed.org>"
+    ],
+    "licenses": [{
+      "type": "BSD"
+    }],
+    "devDependencies": {
+      "jshint": "0.2.3",
+      "uglify-js": "1.0.x",
+      "banner": "0.0.x"
+    }
+}

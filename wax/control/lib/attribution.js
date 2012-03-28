@@ -21,9 +21,9 @@ wax.attribution = function() {
         return id;
     }
 
-    a.set = function(content) {
-        if (typeof content === 'undefined') return;
-        container.innerHTML = html_sanitize(content, urlX, idX);
+    a.content = function(x) {
+        if (typeof x === 'undefined') return container.innerHTML;
+        container.innerHTML = html_sanitize(x, urlX, idX);
         return this;
     };
 

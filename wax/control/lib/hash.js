@@ -49,7 +49,7 @@ wax.hash = function(options) {
         }
     }
 
-    var _move = wax.util.throttle(move, 500);
+    var _move = wax.u.throttle(move, 500);
 
     hash.add = function() {
         stateChange(getState());
